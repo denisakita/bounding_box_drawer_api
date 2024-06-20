@@ -1,12 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
+
+from routes import image_routes, bounding_box_routes
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
-
+app.register_blueprint(image_routes, url_prefix='/api')
+app.register_blueprint(bounding_box_routes, url_prefix='/api')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)
