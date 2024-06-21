@@ -7,6 +7,7 @@ from config import IMAGE_DIR
 
 bounding_box_routes = Blueprint('bounding_box_routes', __name__)
 
+
 @bounding_box_routes.route('/save', methods=['POST'])
 def save_bounding_boxes():
     data = request.json
